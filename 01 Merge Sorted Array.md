@@ -46,7 +46,7 @@ length of `n`.
 - `nums2.length == n`
 - `0 <= m,n <= 200`
 - `1 <= m + n <= 200`
-- `-10^9 <= nums1[i], nums2[j] <= 10^9`o
+- `-10^9 <= nums1[i], nums2[j] <= 10^9`
 
 > **Follow Up:** Can you come up with an algorithm that runs in `O(m + n)` time
 > ?
