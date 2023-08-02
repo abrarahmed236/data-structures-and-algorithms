@@ -99,7 +99,7 @@ already sorted. We can find the greatest element in both arrays simply by
 looking at last element of both arrays.
 
 ```text
-            i                    j
+          i                    j
 -> [1, 2, 5, 0, 0, 0] , [2, 3, 6]
     # Greatest element is the greater element among 5 or 6
 ```
@@ -108,7 +108,7 @@ We can then place the greater element at the end of `nums1` since we know that
 location is empty.
 
 ```text
-            i        e           j
+          i        e           j
 -> [1, 2, 5, 0, 0, 6] , [2, 3, 6]
 ```
 
@@ -116,10 +116,10 @@ We can then ignore the element that was the greatest in the previous step. Here
 we are marking it as `x`, in the code we can just ignore that element.
 
 ```text
-            i        e           j
+          i        e           j
 -> [1, 2, 5, 0, 0, 6] , [2, 3, x]
 # And update the indices
-            i     e           j
+          i     e           j
 -> [1, 2, 5, 0, 0, 6] , [2, 3, x]
 ```
 
@@ -127,7 +127,7 @@ In the next iteration we see that `5` is greater than `3`, and we need to put 5
 in its correct place.
 
 ```text
-        i     e              j
+       i     e              j
 -> [1, 2, x, 0, 5, 6] , [2, 3, x]
 ```
 
@@ -136,12 +136,12 @@ numbers left in the second array.
 
 ```text
 # 3 is greater than 2
-        i  e              j
+       i  e              j
 -> [1, 2, x, 3, 5, 6] , [2, x, x]
 
 # 2 is equal to 2, so let's place the two from nums2
-        e
-        i               j
+       e
+       i               j
 -> [1, 2, 2, 3, 5, 6] , [x, x, x]
 ```
 
