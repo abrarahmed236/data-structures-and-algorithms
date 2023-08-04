@@ -31,7 +31,7 @@ simply return that element.
 
 For this we would need some sort of counter. We could use an array, but with  
 `-10^9 <= nums[i] <= 10^9` the array would be huge and much larger than  
-`n <= 5*10^4`. So instead we can use a map to count. In C++ you can use  
+`n <= 5 * 10^4`. So instead we can use a map to count. In C++ you can use  
 `map<int, int>` or `unordered_map<int, int>` to do this. Since we do not need  
 the key elements to be ordered in this approach, we can use  
 `unordered_map<int, int>` which gives us `O(1)` time complexity for access and  

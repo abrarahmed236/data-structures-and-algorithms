@@ -114,10 +114,25 @@ of a space complexity of `O(n)`.
 ## Approach 3
 
 There is a way to solve this problem in `O(n)` time while using only `O(1)`  
-space. For this we reverse the whole array to begin with. Then we reverse the
-first `N-k` elements and the last `k` elements of the array. This puts the  
-last `k` elements at the front of the array, and the first `N-k` elements at  
-the back and because we reversed twice, it will be in correct order.
+space. For this we reverse the whole array to begin with. This puts the last  
+`k` elements at the front of the array and the first `N-k` elements at the  
+back. Then we reverse the first `k` elements and the last `N-k` elements of the  
+array. This fixes the ordering of the elements.
+
+```text
+-> [1, 2, 3, 4, 5, 6, 7] k = 3
+
+#  Reverse the whole array
+-> [7, 6, 5, 4, 3, 2, 1]
+
+#  Reverse the first k elements
+-> [5, 6, 7, 4, 3, 2, 1]
+
+#  Reverse the last N-k elements
+-> [5, 6, 7, 1, 2, 3, 4]
+
+#  This is our desired result
+```
 
 ### Code
 

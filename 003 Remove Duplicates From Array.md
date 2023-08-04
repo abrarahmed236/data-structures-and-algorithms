@@ -40,24 +40,80 @@ Return `k`.
 ## Approach
 
 This problem also has a simple and elegant solution. If the `nums` has a size  
-of `0` or `1`, we don't need to make any changes. The problem is non-trivial  
-from `nums.size() >= 2`. From here we can safely look at the second element  
-without going over array bounds. So in our solution we start from the second  
-element and process each element. If it is the same as the previous element  
-then we ignore it and move on. If it is not the same then we add this element  
-to the beginning of the array.
+of `0` or `1`, we don't need to make any changes.
 
-To achieve this we will have two indices (or iterators). Both pointing to the  
-second element in the array. Let's call them `i` and `j`. Let's use `j` to  
-denote the elements that have already been processed and next location where  
-an element can be added is `Arr[j]`. We consider every element before `Arr[j]`  
-to be sorted and non-duplicated. This is true in the beginning when `j == 1`.  
-From now on if `Arr[j] == Arr[j-1]` we are not intereested in the element at  
-`j`. So we ignore it and move on. And if `Arr[j] != Arr[j-1]` we want that  
-element in our final array so we do `Arr[i] = Arr[j]` and increment `j`.
+And for `nums.size() >= 2`, we can iterate over the array and check if the  
+current element is equal to the last included element. If it is equal then we  
+append it to the beginning of the array, else we ignore it and go to the next  
+iteration.
 
-When we are done we will have sorted non-duplicate elements in  
-`Arr[0]...A[j-1]` and `j` indicates the number of elements in our array.
+For this let's maintain two indices, `i, j`. `i` points to the last processed  
+element and `j` points to the element that is to be processed in the current  
+iteration. If `nums[j] == nums[i]`, then we have already included `nums[j]` in  
+our array so we can ignore it and move on. If `nums[j] !] nums[i]`, then we  
+need to include it by doing `i++; nums[i] = nums[j]`.
+
+When we are done iterating over the array, we see that `i` points to the last  
+processed element and there are `i+1` elements in the final array. We can  
+ignore elements after `nums[i-1]`.
+
+```text
+-> [0 ,0 ,1 ,1 ,1 ,2 ,2 ,3 ,3 ,4]
+# Let us consider the first element to be already processed
+
+    i
+       j
+-> [0 ,0 ,1 ,1 ,1 ,2 ,2 ,3 ,3 ,4]
+# nums[j] == nums[i], ignore and move on
+
+    i
+        ->j
+-> [0 ,0 ,1 ,1 ,1 ,2 ,2 ,3 ,3 ,4]
+# nums[j] != nums[i], include in final array
+
+     ->i
+           ->j
+-> [0 ,1 ,1 ,1 ,1 ,2 ,2 ,3 ,3 ,4]
+# nums[j] == nums[i], ignore and move on
+
+       i
+              ->j
+-> [0 ,1 ,1 ,1 ,1 ,2 ,2 ,3 ,3 ,4]
+# nums[j] == nums[i], ignore and move on
+
+       i
+                 ->j
+-> [0 ,1 ,1 ,1 ,1 ,2 ,2 ,3 ,3 ,4]
+# nums[j] != nums[i], include in final array
+
+        ->i
+                    ->j
+-> [0 ,1 ,2 ,1 ,1 ,2 ,2 ,3 ,3 ,4]
+# nums[j] == nums[i], ignore and move on
+
+
+          i
+                       ->j
+-> [0 ,1 ,2 ,1 ,1 ,2 ,2 ,3 ,3 ,4]
+# nums[j] != nums[i], include in final array
+
+           ->i
+                          ->j
+-> [0 ,1 ,2 ,3 ,1 ,2 ,2 ,3 ,3 ,4]
+# nums[j] == nums[i], ignore and move on
+
+             i
+                             ->j
+-> [0 ,1 ,2 ,3 ,1 ,2 ,2 ,3 ,3 ,4]
+# nums[j] != nums[i], include in final array
+
+              ->i
+                                ->j
+-> [0 ,1 ,2 ,3 ,4 ,2 ,2 ,3 ,3 ,4]
+# and we are done.
+# i denotes the last element of the final array.
+# return i+1
+```
 
 ## Code
 
@@ -65,14 +121,13 @@ When we are done we will have sorted non-duplicate elements in
 class Solution {
    public:
     int removeDuplicates(vector<int>& nums) {
-        int i = 1;
-        int n = nums.size();
-        for (int j = 1; j < n; j++) {
-            if (nums[j] != nums[j - 1]) {
-                nums[i++] = nums[j];
+        int i = 0;
+        for (int j = 1; j < nums.size(); j++) {
+            if (nums[j] != nums[i]) {
+                nums[++i] = nums[j];
             }
         }
-        return i;
+        return i+1;
     }
 };
 ```
