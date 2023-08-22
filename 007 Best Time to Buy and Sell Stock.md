@@ -33,8 +33,9 @@ achieve any profit, return `0`.
 
 ## Approach 1
 
-A brute force approach to this problem would be to calculate the profit for each
-pair of buying dates and selling dates, and then choosing the maximum profit.
+A brute force approach to this problem would be to calculate the profit for  
+each pair of buying dates and selling dates, and then choosing the maximum  
+profit.
 
 ### Code
 
@@ -79,6 +80,7 @@ This line `bestProfit = max(bestProfit, prices[i]-bestPrice)` takes care of
 both these scenarios.
 
 ### Code
+
 ```cpp
 class Solution {
 public:
@@ -100,5 +102,5 @@ public:
 
 ### Complexity:
 
-* **Time**: `O(N)`
-* **Space**: `O(1)`
+- **Time**: `O(N)`
+- **Space**: `O(1)`
