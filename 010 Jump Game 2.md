@@ -177,7 +177,7 @@ optimizing. But they do not take into account the nature of the problem.
 ## Approach 4: Optimal Solution
 
 We can take into account that at each index we know how far we can go with the
-distance allowed from that index. i.e we know i+nums[i] viz the furthest index
+distance allowed from that index. i.e we know `i+nums[i]` viz the furthest index
 we can reach in one jump.
 
 We can use this information to keep track of max distance we can travel before
@@ -197,7 +197,7 @@ class Solution {
                 currentFarthest = nextFarthest;
             }
             nextFarthest = max(nextFarthest, i + nums[i]);
-            if (nextFarthest < i) return -1;
+            if (nextFarthest <= i && i != nums.size()-1) return -1;
         }
         return jumps;
     }
@@ -208,7 +208,3 @@ class Solution {
 
 - **Time**: `O(N)`
 - **Space**: `O(1)`
-
-### Discussion
-
-This is the best complexity possible with this problem.
