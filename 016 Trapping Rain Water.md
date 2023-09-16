@@ -12,12 +12,9 @@ class Solution {
         for (int i = right.size() - 2; i >= 0; i--) {
             right[i] = max(right[i], right[i + 1]);
         }
-        for (int i = 0; i < left.size(); i++) {
-            left[i] = min(left[i], right[i]);
-        }
         int sum = 0;
         for (int i = 0; i < left.size(); i++) {
-            sum += left[i] - height[i];
+            sum += min(left[i], right[i]) - height[i];
         }
         return sum;
     }
