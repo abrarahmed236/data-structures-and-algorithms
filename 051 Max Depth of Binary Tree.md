@@ -1,4 +1,4 @@
-# Max Depth of Tree (Problem 104)
+# Max Depth of Binary Tree (Problem 104)
 
 Straight forward solution
 
