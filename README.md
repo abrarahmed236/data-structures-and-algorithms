@@ -8,7 +8,9 @@ Sources:
 
 Important Topics (to be revised):
 - Graph BFS
+    - **Minimum Genetic Mutation**
 - Backtracking
     - Permutations
     - Combinations
 - Dynamic Programming
+- O/1 Knapsack
