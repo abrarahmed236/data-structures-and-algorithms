@@ -4,8 +4,6 @@ Quick and Dirty
 
 ```cpp
 class Solution {
-    static const int debug = false;
-
    public:
     void util(int& open, int& close, string& curr, vector<string>& result) {
         if (close == 0) {
@@ -59,8 +57,6 @@ Much cleaner implemenation of the same method above. Performs well.
 
 ```cpp
 class Solution {
-    static const int debug = false;
-
    public:
     vector<string> generateParenthesis(int n) {
         vector<string> result;
@@ -74,6 +70,25 @@ class Solution {
         }
         if (open < close) util(open + 1, close, curr + "(", result);
         if (open > 0) util(open - 1, close - 1, curr + ")", result);
+    }
+};
+```
+
+Disgustingly short version. Performs just as well.
+
+```cpp
+class Solution {
+    void util(int open, int close, string curr, vector<string>& result) {
+        if (close == 0) result.push_back(curr);
+        if (open < close) util(open + 1, close, curr + "(", result);
+        if (open > 0) util(open - 1, close - 1, curr + ")", result);
+    }
+
+   public:
+    vector<string> generateParenthesis(int n) {
+        vector<string> result;
+        util(0, n, "", result);
+        return result;
     }
 };
 ```
