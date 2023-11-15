@@ -15,3 +15,8 @@ Important Topics (to be revised):
   - Combinations
 - Dynamic Programming
 - [O/1 Knapsack](https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/)
+
+Revisit:
+
+- Median of two sorted arrays.
+- Find K pairs with smallest sums.
