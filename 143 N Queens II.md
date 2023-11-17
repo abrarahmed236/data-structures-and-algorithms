@@ -75,3 +75,52 @@ class Solution {
     }
 };
 ```
+
+## Bonus solution to: N Queens
+
+Return the state of all valid boards.
+
+```cpp
+class Solution {
+    typedef vector<int> Row;
+    typedef vector<vector<int>> Board;
+    typedef vector<vector<string>> Result;
+
+   public:
+    vector<vector<string>> solveNQueens(int n) {
+        Board board(n, vector<int>(n));
+        Result result;
+        vector<int> col(n), diag(2 * n - 1), anti_diag(2 * n - 1);
+        solve(0, col, diag, anti_diag, board, result, n);
+        return result;
+    }
+    void solve(int row, Row& col, Row& diag, Row& anti_diag, Board& board,
+               Result& result, int N) {
+        if (row == N) {
+            add_result(board, result, N);
+            return;
+        }
+        for (int i = 0; i < N; i++) {
+            int anti_i = row - i + N - 1;
+            if (!col[i] && !diag[row + i] && !anti_diag[anti_i]) {
+                col[i] = diag[row + i] = anti_diag[anti_i] = 1;
+                board[row][i] = 1;
+                solve(row + 1, col, diag, anti_diag, board, result, N);
+                board[row][i] = 0;
+                col[i] = diag[row + i] = anti_diag[anti_i] = 0;
+            }
+        }
+    }
+    void add_result(Board& board, Result& result, int N) {
+        vector<string> res;
+        for (int i = 0; i < N; i++) {
+            string temp;
+            for (int j = 0; j < N; j++) {
+                temp += board[i][j] ? 'Q' : '.';
+            }
+            res.push_back(temp);
+        }
+        result.push_back(res);
+    }
+};
+```
