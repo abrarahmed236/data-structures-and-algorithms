@@ -28,3 +28,5 @@ Revisit:
 - Unique Paths II
 - Course Schedule
 - Course Schedule II
+- N Queens \*
+
