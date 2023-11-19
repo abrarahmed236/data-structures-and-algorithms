@@ -18,6 +18,10 @@ Important Topics (to be revised):
 
 Revisit:
 
+- [ ] Minimum Genetic Mutation \*
+- [ ] Permutations
+- [ ] Combinations
+- [ ] Coin Change
 - [ ] Median of two sorted arrays.
 - [ ] Find K pairs with smallest sums.
 - [ ] LRU Cache
@@ -29,17 +33,13 @@ Revisit:
 - [ ] Course Schedule
 - [ ] Course Schedule II
 - [ ] N Queens \*
+- [ ] N Queens II \*
 - [ ] Word Break \*
 - [ ] Interleaving String \*
 - [ ] Edit Distance \*
-- [ ] Best Time to Buy and Sell Stock III \*
-- [ ] Best Time to Buy and Sell Stock IV \*
+- [x] Best Time to Buy and Sell Stock III \*
+- [x] Best Time to Buy and Sell Stock IV \*
 
+### To-Do: 
 
-```mermaid
-graph TD;
-  A-->B;
-  A-->C;
-  B-->D;
-  C-->D;
-```
+- [ ] Add and check links for each problem.
