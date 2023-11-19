@@ -36,10 +36,11 @@ Revisit:
 - [ ] N Queens II \*
 - [ ] Word Break \*
 - [ ] Interleaving String \*
-- [ ] Edit Distance \*
+- [X] Edit Distance \*
 - [x] Best Time to Buy and Sell Stock III \*
 - [x] Best Time to Buy and Sell Stock IV \*
 
 ### To-Do: 
 
 - [ ] Add and check links for each problem.
+- [ ] Need another revisit -> 3visit.
