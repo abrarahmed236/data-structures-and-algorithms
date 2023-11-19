@@ -30,12 +30,12 @@ Revisit:
 - [ ] Longest Increasing Subsequence
 - [ ] Find Median from Data Stream \*
 - [ ] Unique Paths II
-- [ ] Course Schedule
-- [ ] Course Schedule II
+- [X] Course Schedule
+- [X] Course Schedule II
 - [ ] N Queens \*
 - [ ] N Queens II \*
-- [ ] Word Break \*
-- [ ] Interleaving String \*
+- [X] Word Break \*
+- [X] Interleaving String \*
 - [X] Edit Distance \*
 - [x] Best Time to Buy and Sell Stock III \*
 - [x] Best Time to Buy and Sell Stock IV \*
@@ -44,3 +44,11 @@ Revisit:
 
 - [ ] Add and check links for each problem.
 - [ ] Need another revisit -> 3visit.
+
+
+### 3visit
+
+- [ ] Best Time to Buy and Sell Stock IV
+- [ ] Edit Distance \*
+- [ ] Interleaving String \*
+- [ ] Word Break \*
