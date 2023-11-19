@@ -29,11 +29,11 @@ Revisit:
 - [ ] Evaluate Division \*
 - [ ] Longest Increasing Subsequence
 - [ ] Find Median from Data Stream \*
-- [ ] Unique Paths II
+- [X] Unique Paths II
 - [X] Course Schedule
 - [X] Course Schedule II
-- [ ] N Queens \*
-- [ ] N Queens II \*
+- [X] N Queens \*
+- [X] N Queens II \*
 - [X] Word Break \*
 - [X] Interleaving String \*
 - [X] Edit Distance \*

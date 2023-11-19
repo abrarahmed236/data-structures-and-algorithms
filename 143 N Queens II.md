@@ -82,45 +82,39 @@ Return the state of all valid boards.
 
 ```cpp
 class Solution {
-    typedef vector<int> Row;
-    typedef vector<vector<int>> Board;
-    typedef vector<vector<string>> Result;
-
    public:
     vector<vector<string>> solveNQueens(int n) {
-        Board board(n, vector<int>(n));
-        Result result;
-        vector<int> col(n), diag(2 * n - 1), anti_diag(2 * n - 1);
-        solve(0, col, diag, anti_diag, board, result, n);
+        vector<int> cols(n), diags(2 * n - 1), rdiags(2 * n - 1);
+        vector<vector<string>> result;
+        vector<pair<int, int>> curr_places;
+        recurse(0, cols, diags, rdiags, curr_places, result, n);
         return result;
     }
-    void solve(int row, Row& col, Row& diag, Row& anti_diag, Board& board,
-               Result& result, int N) {
+    void recurse(int row, vector<int>& cols, vector<int>& diags,
+                 vector<int>& rdiags, vector<pair<int, int>>& curr_places,
+                 vector<vector<string>>& result, int N) {
         if (row == N) {
-            add_result(board, result, N);
+            add_result(curr_places, result, N);
             return;
         }
         for (int i = 0; i < N; i++) {
-            int anti_i = row - i + N - 1;
-            if (!col[i] && !diag[row + i] && !anti_diag[anti_i]) {
-                col[i] = diag[row + i] = anti_diag[anti_i] = 1;
-                board[row][i] = 1;
-                solve(row + 1, col, diag, anti_diag, board, result, N);
-                board[row][i] = 0;
-                col[i] = diag[row + i] = anti_diag[anti_i] = 0;
+            int r_i = row - i + N - 1;
+            if (!cols[i] && !diags[row + i] && !rdiags[r_i]) {
+                cols[i] = diags[row + i] = rdiags[r_i] = 1;
+                curr_places.push_back({row, i});
+                recurse(row + 1, cols, diags, rdiags, curr_places, result, N);
+                curr_places.pop_back();
+                cols[i] = diags[row + i] = rdiags[r_i] = 0;
             }
         }
     }
-    void add_result(Board& board, Result& result, int N) {
-        vector<string> res;
-        for (int i = 0; i < N; i++) {
-            string temp;
-            for (int j = 0; j < N; j++) {
-                temp += board[i][j] ? 'Q' : '.';
-            }
-            res.push_back(temp);
+    void add_result(vector<pair<int, int>>& curr_places,
+                    vector<vector<string>>& result, int N) {
+        vector<string> board(N, string(N, '.'));
+        for (auto& p : curr_places) {
+            board[p.first][p.second] = 'Q';
         }
-        result.push_back(res);
+        result.push_back(board);
     }
 };
 ```

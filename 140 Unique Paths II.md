@@ -29,22 +29,23 @@ class Solution {
 ```cpp
 class Solution {
    public:
-    int solve(int i, int j, vector<vector<int>>& grid,
-              vector<vector<int>>& dp) {
-        if (i >= grid.size() || j >= grid[0].size()) {
-            return 0;
-        }
-        if (grid[i][j] == 1) return 0;
-
-        if (i == grid.size() - 1 && j == grid[0].size() - 1) return 1;
-        if (dp[i][j] != -1) return dp[i][j];
-        return dp[i][j] = solve(i + 1, j, grid, dp) + solve(i, j + 1, grid, dp);
+    int uniquePathsWithObstacles(vector<vector<int>>& obs) {
+        int M = obs.size();
+        int N = obs[0].size();
+        vector<vector<int>> dp(M, vector<int>(N, -1));
+        return recurse(0, 0, obs, dp);
     }
-    int uniquePathsWithObstacles(vector<vector<int>>& grid) {
-        int N = grid.size();
-        int M = grid[0].size();
-        vector<vector<int>> dp(N, vector<int>(M, -1));
-        return solve(0, 0, grid, dp);
+    int recurse(int i, int j, vector<vector<int>>& obs,
+                vector<vector<int>>& dp) {
+        if (i >= obs.size() || j >= obs[0].size()) return 0;
+
+        if (obs[i][j] == 1) return 0;
+
+        if (i == obs.size() - 1 && j == obs[0].size() - 1) return 1;
+
+        if (dp[i][j] == -1)
+            dp[i][j] = recurse(i + 1, j, obs, dp) + recurse(i, j + 1, obs, dp);
+        return dp[i][j];
     }
 };
 ```
