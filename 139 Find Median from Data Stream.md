@@ -18,9 +18,7 @@ class MedianFinder {
         if (N & 1)
             return data_stream[N / 2];
         else
-            return ((double)data_stream[(N - 1) / 2] +
-                    (double)data_stream[N / 2]) /
-                   (double)2;
+            return (data_stream[(N - 1) / 2] + data_stream[N / 2]) / 2.0;
     }
 };
 ```
@@ -29,9 +27,8 @@ Version with two priority queues
 
 ```cpp
 class MedianFinder {
-    static const bool debug = false;
-    priority_queue<int, vector<int>, less<int>> less;
-    priority_queue<int, vector<int>, greater<int>> more;
+    priority_queue<int, vector<int>, less<int>> less;    // maxHeap
+    priority_queue<int, vector<int>, greater<int>> more; // minHeap
 
    public:
     MedianFinder() {}
@@ -56,3 +53,14 @@ class MedianFinder {
 ```
 
 Additional follow-up questions exist. `//later`. Can be done.
+
+### Follow up 1
+
+What if all numbers are in the range 100. how would you solve this problem ?
+
+- Yes, with buckets.
+
+What if 99% of all problems are in 0 to 100 range but 1% are outside ?
+
+- Yes, in this case the median is definitely between 0 100 so maintain buckets
+  and remember how many numbers are before and after.

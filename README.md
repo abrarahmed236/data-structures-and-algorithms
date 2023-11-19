@@ -18,37 +18,47 @@ Important Topics (to be revised):
 
 Revisit:
 
+- [-] Minimum Genetic Mutation \*
+- [-] Permutations
+- [-] Combinations
+- [-] Coin Change
+- [-] Find K pairs with smallest sums.
+- [-] LRU Cache
+- [-] Basic Calculator \*
+- [-] Evaluate Division \*
+- [-] Longest Increasing Subsequence
+- [x] Median of two sorted arrays. \*
+- [x] Find Median from Data Stream \*
+- [x] Unique Paths II
+- [x] Course Schedule
+- [x] Course Schedule II
+- [x] N Queens \*
+- [x] N Queens II \*
+- [x] Word Break \*
+- [x] Interleaving String \*
+- [x] Edit Distance \*
+- [x] Best Time to Buy and Sell Stock III \*
+- [x] Best Time to Buy and Sell Stock IV \*
+
+### To-Do:
+
+- [ ] Add and check links for each problem.
+- [ ] Need another revisit -> 3visit.
+
+### 3visit
+
 - [ ] Minimum Genetic Mutation \*
 - [ ] Permutations
 - [ ] Combinations
 - [ ] Coin Change
-- [ ] Median of two sorted arrays.
 - [ ] Find K pairs with smallest sums.
 - [ ] LRU Cache
 - [ ] Basic Calculator \*
 - [ ] Evaluate Division \*
 - [ ] Longest Increasing Subsequence
-- [ ] Find Median from Data Stream \*
-- [X] Unique Paths II
-- [X] Course Schedule
-- [X] Course Schedule II
-- [X] N Queens \*
-- [X] N Queens II \*
-- [X] Word Break \*
-- [X] Interleaving String \*
-- [X] Edit Distance \*
-- [x] Best Time to Buy and Sell Stock III \*
-- [x] Best Time to Buy and Sell Stock IV \*
-
-### To-Do: 
-
-- [ ] Add and check links for each problem.
-- [ ] Need another revisit -> 3visit.
-
-
-### 3visit
-
 - [ ] Best Time to Buy and Sell Stock IV
 - [ ] Edit Distance \*
 - [ ] Interleaving String \*
 - [ ] Word Break \*
+- [ ] Median of two sorted arrays. \*
+- [ ] Find Median from Data Stream \*
