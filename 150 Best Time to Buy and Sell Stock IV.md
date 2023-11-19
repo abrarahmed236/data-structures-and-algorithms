@@ -1,7 +1,8 @@
 # Best Time to Buy and Sell Stock IV (Problem 188)
 
 2D dp,
-[Refer](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/solutions/2555699/leetcode-the-hard-way-7-lines-line-by-line-explanation/?envType=study-plan-v2&envId=top-interview-150) `//revisit`
+[Refer](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/solutions/2555699/leetcode-the-hard-way-7-lines-line-by-line-explanation/?envType=study-plan-v2&envId=top-interview-150)
+`//revisit`
 
 ```cpp
 class Solution {
@@ -19,6 +20,31 @@ class Solution {
         }
 
         return dp[k][1];
+    }
+};
+```
+
+### Another Code
+
+```cpp
+struct info {
+    int buy;
+    int sell;
+};
+class Solution {
+   public:
+    int maxProfit(int k, vector<int>& prices) {
+        if (k == 0) return 0;
+
+        vector<info> dp(k + 1, {INT_MAX, 0});
+        for (int price : prices) {
+            for (int i = 1; i <= k; i++) {
+                dp[i].buy = min(dp[i].buy, price - dp[i - 1].sell);
+                dp[i].sell = max(dp[i].sell, price - dp[i].buy);
+            }
+        }
+
+        return dp[k].sell;
     }
 };
 ```

@@ -104,3 +104,45 @@ public:
 
 - **Time**: `O(N)`
 - **Space**: `O(1)`
+
+### Another Solution
+
+```cpp
+class Solution {
+   public:
+    int maxProfit(vector<int>& A) {
+        /* Testcases
+        7 -> 0
+        1 2 -> 1
+        2 1 -> 0
+        1 1 -> 0
+        1 2 3 -> 2
+        1 3 2 -> 2
+        2 1 3 -> 2
+        2 3 1 -> 1
+        3 1 2 -> 1
+        3 2 1 -> 0
+
+        // Notes:
+        - One transaction max.
+        - Iterate over the array, accumulating the profit if you bought
+        yesterday and sold today.
+        - If profit accumulated is less than zero, reset profit accumulated to
+        zero.
+        - If profit accumulated is greater than any previous accumulation.
+        Update Global profit.
+
+        - Similar to Kadane's algorithm
+        */
+
+        int profit_curr = 0;
+        int profit_global = 0;
+        for (int i = 1; i < A.size(); i++) {
+            profit_curr += A[i] - A[i - 1];
+            if (profit_curr < 0) profit_curr = 0;
+            profit_global = max(profit_global, profit_curr);
+        }
+        return profit_global;
+    }
+};
+```

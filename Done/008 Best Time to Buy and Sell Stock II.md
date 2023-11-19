@@ -1,4 +1,4 @@
-# [Best Time to Buy and Sell Stock 2 (Problem 122)](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)
+# [Best Time to Buy and Sell Stock II (Problem 122)](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)
 
 ## Description
 
@@ -38,14 +38,16 @@ Find and return the **maximum** profit you can achieve.
 
 ### Constraints
 
-* `1 <= prices.length <= 3 * 10^4`
-* `0 <= prices[i] <= 10^4`
+- `1 <= prices.length <= 3 * 10^4`
+- `0 <= prices[i] <= 10^4`
 
 ## Approach 1
 
-Since we are not constrained with buying and selling only once, we can simple buy and sell for each instance where we get a profit.
+Since we are not constrained with buying and selling only once, we can simple
+buy and sell for each instance where we get a profit.
 
 ### Code
+
 ```cpp
 class Solution {
 public:
@@ -63,5 +65,43 @@ public:
 
 ### Complexity
 
-* **Time**: `O(N)`
-* **Space**: `O(1)`
+- **Time**: `O(N)`
+- **Space**: `O(1)`
+
+### Another Code
+
+```cpp
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        /* Discussion
+            For the testcase given we can see the profit if you bought yesterday
+        and sold today.
+        Prices:  7  1  5  3  6  4
+        Profits: 0 -6  4 -2  3 -2
+            We can ignore the days when we get negative profits, and simply do
+        this on days we get positive profit. i.e in the example above, it is
+        day 3 and day 5. i.e buy on day 2 sell on day 3, buy on day 4 sell on day 5.
+        This should accumulate the maximum profit.
+
+        // Testcases
+        -> 0 // empty input
+        1 -> 0 // single day
+        1 1 -> 0
+        1 2 -> 1
+        2 1 -> 0
+        1 2 3 -> 2
+        1 3 2 -> 2
+        2 1 3 -> 2
+        2 3 1 -> 1
+        3 1 2 -> 1
+        3 2 1 -> 0
+        */
+        int profit = 0;
+        for(int i = 1; i < prices.size(); i++) {
+            profit += max(prices[i] - prices[i - 1], 0);
+        }
+        return profit;
+    }
+};
+```
