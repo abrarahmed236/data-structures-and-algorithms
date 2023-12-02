@@ -39,6 +39,7 @@ Revisit:
 - [x] Edit Distance \*
 - [x] Best Time to Buy and Sell Stock III \*
 - [x] Best Time to Buy and Sell Stock IV \*
+- [x] [Number of complete components](https://leetcode.com/problems/count-the-number-of-complete-components/description/)
 
 ### To-Do:
 
@@ -64,5 +65,3 @@ Revisit:
 - [ ] Find Median from Data Stream \*
 
 ### Later
-
-- [ ] [Number of complete components](https://leetcode.com/problems/count-the-number-of-complete-components/description/)
