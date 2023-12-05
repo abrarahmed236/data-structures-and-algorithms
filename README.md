@@ -8,8 +8,12 @@ Sources:
 
 Important Topics (to be revised):
 
-- KMP 
+- KMP
 
-# Revisit
-- [ ] Stringoholics
-- [ ]
+# Revision
+
+- [ ] Best Time to Buy and Sell Stock I
+- [ ] Best Time to Buy and Sell Stock II
+- [ ] Best Time to Buy and Sell Stock III
+- [ ] Best Time to Buy and Sell Stock IV
+- [ ] Stringoholics - KMP Solution
