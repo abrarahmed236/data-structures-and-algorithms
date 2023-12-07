@@ -9,6 +9,8 @@ Sources:
 Important Topics (to be revised):
 
 - KMP
+- Dijkstras algo
+- Ranged Minimum
 
 # Revision
 

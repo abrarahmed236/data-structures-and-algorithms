@@ -21,8 +21,8 @@ achieve any profit, return `0`.
 
 ### Example 2:
 
-> **Input**: prices = [7,6,4,3,1]  
-> **Output**: 0  
+> **Input**: prices = `[7,6,4,3,1]`  
+> **Output**: `0`  
 > **Explanation**: In this case, no transactions are done and the max profit
 > = 0.
 
