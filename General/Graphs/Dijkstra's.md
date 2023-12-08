@@ -140,3 +140,41 @@ class Solution {
     }
 };
 ```
+
+Similarly, this question works well with dijkstra's  
+743. Network Delay Time
+
+```cpp
+class Solution {
+   public:
+    int networkDelayTime(vector<vector<int>> &edges, int V, int S) {
+        vector<int> dist(V, INT_MAX);
+
+        vector<vector<pair<int, int>>> adj(V);  // adjacency list
+        for (auto edge : edges) {
+            int u = edge[0] - 1;
+            int v = edge[1] - 1;
+            int w = edge[2];
+            adj[u].push_back({v, w});
+        }
+
+        set<pair<int, int>> Q;
+        dist[S - 1] = 0;
+        Q.insert({0, S - 1});
+        while (!Q.empty()) {
+            int u = Q.begin()->second;
+            Q.erase(Q.begin());
+            for (auto [v, w] : adj[u]) {
+                if (dist[u] + w < dist[v]) {
+                    Q.erase({dist[v], v});
+                    dist[v] = dist[u] + w;
+                    Q.insert({dist[v], v});
+                }
+            }
+        }
+
+        int result = *max_element(dist.begin(), dist.end());
+        return result == INT_MAX ? -1 : result;
+    }
+};
+```
