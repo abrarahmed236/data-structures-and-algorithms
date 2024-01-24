@@ -1,9 +1,10 @@
-# LeetCode Notes
+# Data Structures and Algorithms Online Judge Problem Notes
 
-Notes for leetcode problems.
+My notes and solutions for leetcode type problems.
 
-Sources:
+Relevant Links:
 
+- [LeetCode](https://leetcode.com/problemset/)
 - [LeetCode 150](https://leetcode.com/studyplan/top-interview-150/)
 
 Important Topics (to be revised):
