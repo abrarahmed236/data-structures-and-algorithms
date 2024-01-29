@@ -10,10 +10,13 @@ Relevant Links:
 Important Topics (to be revised):
 
 - KMP
-- Dijkstras algo
+- Rabin-Karp
+- Dijkstra's
+- N meetings in one room
 - Ranged Minimum
+- LFU Cache and LRU Cache
 
-# Revision
+## Revision
 
 - [ ] Best Time to Buy and Sell Stock I
 - [ ] Best Time to Buy and Sell Stock II
