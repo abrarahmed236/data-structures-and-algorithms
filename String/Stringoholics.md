@@ -4,7 +4,7 @@
 
 Working solution but inefficient time. get_time function is inefficient.
 
-### Code
+### Code for brute force approach
 
 ```cpp
 
@@ -148,7 +148,7 @@ For this we ignore all empty strings if there are any, and then we get the
 minimum time for each string individually as described above say
 `t1, t2, t3, t4 ...`. Now we take the LCM of these times to get the result.
 
-### Complexity
+### Complexity for KMP based approach
 
 - Say we are given M strings with a maximum size of N for each string then for
   each string we do:
@@ -157,8 +157,152 @@ minimum time for each string individually as described above say
 - `O(M*N)` to get minimum `t` for each string to populate `array<int> minimum_t`
 - `O(M)` to find LCM of all t's in `minimum_t`.
 
-### Code
+### Code for KMP based approach
+
+- [ ] To-Do: Improve Readability
 
 ```cpp
+#include <bits/stdc++.h>
 
+#include <cstdio>
+
+using namespace std;
+
+class Solution {
+   public:
+    int solve(vector<string> &A);
+};
+
+////////////////////////////// SUBMISSION //////////////////////////////
+
+const long long mod = 1e9 + 7;
+
+vector<int> get_lps(const string &needle) {
+    vector<int> lps(needle.size());
+
+    lps[0] = 0;
+    int len = 0;
+    for (int i = 1; i < needle.size();) {
+        if (needle[len] == needle[i]) {
+            len++;
+            lps[i] = len;
+            i++;
+        } else {
+            if (len) {
+                len = lps[len - 1];
+            } else {
+                lps[i] = 0;
+                i++;
+            }
+        }
+    }
+    return lps;
+}
+
+unordered_set<int> get_matched_rotations(const string &haystack,
+                                         const string &needle) {
+    // Get LPS for KMP String Matching Algorithm
+    vector<int> lps = get_lps(needle);
+
+    unordered_set<int> matched_rotations;
+
+    int i = 0, j = 0;
+    while (i < haystack.size() && j < needle.size()) {
+        if (haystack[i] == needle[j]) {
+            i++;
+            j++;
+        }
+
+        if (j == needle.size()) {
+            matched_rotations.insert(i - j);
+            j = lps[j - 1];
+        } else if (i < haystack.size() && haystack[i] != needle[j]) {
+            if (j)
+                j = lps[j - 1];
+            else
+                i++;
+        }
+    }
+    return matched_rotations;
+}
+
+int get_time(const string &needle) {
+    if (needle.size() < 2)
+        return 1;
+
+    // Define a haystack with string appended to itself
+    string haystack(needle.begin(), needle.end());
+    haystack.append(needle.begin(), needle.end() - 1);
+
+    // Find all occurences of needle in haystack
+    unordered_set<int> matched_rotations =
+        get_matched_rotations(haystack, needle);
+
+    long long rotations = 0;
+
+    for (long long time = 1;; time++) {
+        rotations += time;
+        long long rotations_modulo = rotations % needle.size();
+        if (matched_rotations.find(rotations_modulo) != matched_rotations.end())
+            return time;
+    }
+    assert(false && "We should not have found ourselves here.");
+}
+
+unordered_map<int, int> get_primes(int num) {  // check with int
+    unordered_map<int, int> result;
+    while (num % 2 == 0) {
+        result[2]++;
+        num /= 2;
+    }
+    for (int i = 3; i * i <= num; i++) {
+        while (num % i == 0) {
+            result[i]++;
+            num /= i;
+        }
+    }
+    if (num > 2)
+        result[num]++;
+    return result;
+}
+
+int get_lcm(const unordered_set<long long> &times) {
+    unordered_map<int, int> powerOfPrimes;
+    for (auto time : times) {
+        unordered_map<int, int> powerOfPrimes1 = get_primes(time);
+        for (auto [prime, power] : powerOfPrimes1) {
+            powerOfPrimes[prime] = max(powerOfPrimes[prime], power);
+        }
+    }
+    long long result = 1;
+    for (auto [prime, power] : powerOfPrimes) {
+        for (int i = 0; i < power; i++) {
+            result = (result * (prime % mod)) % mod;
+        }
+    }
+    return result;
+}
+
+int Solution::solve(vector<string> &A) {
+    unordered_set<long long> times;
+    for (string &s : A) {
+        times.insert(get_time(s));
+    }
+    return get_lcm(times);
+}
+
+////////////////////////////// SUBMISSION //////////////////////////////
+
+int main() {
+    vector<pair<vector<string>, int>> testcases;
+    testcases.push_back({vector<string>{"a", "ababa", "aba"}, 4});
+    testcases.push_back({vector<string>{"aaaa", "ababa", "aba"}, 4});
+
+    for (auto &testcase : testcases) {
+        vector<string> &A = testcase.first;
+        int result = testcase.second;
+        Solution sol;
+        cout << sol.solve(A) << " : " << result << endl << endl;
+    }
+}
 ```
