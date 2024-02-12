@@ -80,14 +80,14 @@ int Solution::solve(vector<string> &A) {
 }
 ```
 
-1. For the Nth Operation, the string is rotated by (N*(N+1))/2 When (N*(N+1))/2
-   % S.len == 0 we know we will have the original string. This takes O(N) time.
-   But we could have a smaller N if the string has recurrent subsequences.
-2. Use KMP algorithm to check for recurrent substrings in O(S.len) time
+1. For the Nth Operation, the string is rotated by `(N*(N+1))/2` When `(N*(N+1))/2
+   % S.len == 0` we know we will have the original string. This takes `O(N)` time.
+   But we could have a smaller `t` if the string has recurrent subsequences.
+2. Use KMP algorithm to check for recurrent substrings in `O(S.len)` time
 
 ## KMP based Approach
 
-If we take a given string `abbaa`, and append it to itself `abbaaabbaa`, any
+If we take a given string `abbaa`, and append it to itself `-> abbaaabbaa`, any
 occurences of `abbaa` in the doubled string correspond to rotations of `abbaa`
 that are the same as the original.
 
@@ -115,7 +115,7 @@ of `A` in the doubled up string `B = A + A`.
 
 > Note: we don't need to consider the last match, since it corresponds to
 > rotating the string by it's own length, and we know trivially that if we
-> rotate by `n` times, it is the same as rotating by `n % A.size()` times. To
+> rotate by `str.size()` times, it is the same as original string. To
 > ignore the last match we remove the last element of the doubled string
 > `B.pop_back()`.
 
@@ -140,7 +140,7 @@ matches. Worst case complexity for this is `O(N)`.
 > these are the worst case senarios for finding the smallest `t` and both take
 > `O(N)` time to find.
 
-Now, in our problem we are not given one string by many strings, and we are
+Now, in our problem we are not given one string but many strings, and we are
 asked to find the minimum time at which a maximum number of strings are their
 original self.
 
