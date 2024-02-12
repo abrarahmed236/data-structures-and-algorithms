@@ -20,7 +20,7 @@ Important Topics (to be revised):
 
 Problems:
 
-- [ ] Stringoholics - KMP Solution
+- [x] Stringoholics - KMP Solution
 - [x] Best Time to Buy and Sell Stock I
 - [x] Best Time to Buy and Sell Stock II
 - [ ] Best Time to Buy and Sell Stock III

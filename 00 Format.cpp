@@ -1,12 +1,5 @@
 #include <bits/stdc++.h>
 
-#include <algorithm>
-#include <deque>
-#include <iostream>
-#include <queue>
-#include <unordered_map>
-#include <vector>
-
 using namespace std;
 
 // Definition for singly-linked list.
@@ -50,4 +43,20 @@ class Node {
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-
+class Solution {
+   public:
+    int majorityElement(vector<int> &nums) {
+        int elem = -1, count = 0;
+        for (int &num : nums) {
+            if (count == 0) {
+                count = 1;
+                elem = num;
+            } else if (elem == num) {
+                count++;
+            } else {
+                count--;
+            }
+        }
+        return elem;
+    }
+};
