@@ -45,18 +45,23 @@ class Node {
 
 class Solution {
    public:
-    int majorityElement(vector<int> &nums) {
-        int elem = -1, count = 0;
-        for (int &num : nums) {
-            if (count == 0) {
-                count = 1;
-                elem = num;
-            } else if (elem == num) {
-                count++;
-            } else {
-                count--;
-            }
+    bool is_palindrome(const string &candidate) {
+        string::const_iterator begin = candidate.begin();
+        string::const_iterator end = candidate.end();
+        end--;
+        while (begin < end) {
+            if (*begin != *end)
+                return false;
+            begin++;
+            end--;
         }
-        return elem;
+        return true;
+    }
+    string firstPalindrome(vector<string> &words) {
+        for (const string &word : words) {
+            if (is_palindrome(word))
+                return word;
+        }
+        return "";
     }
 };
