@@ -43,25 +43,3 @@ class Node {
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-class Solution {
-   public:
-    bool is_palindrome(const string &candidate) {
-        string::const_iterator begin = candidate.begin();
-        string::const_iterator end = candidate.end();
-        end--;
-        while (begin < end) {
-            if (*begin != *end)
-                return false;
-            begin++;
-            end--;
-        }
-        return true;
-    }
-    string firstPalindrome(vector<string> &words) {
-        for (const string &word : words) {
-            if (is_palindrome(word))
-                return word;
-        }
-        return "";
-    }
-};
